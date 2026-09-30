@@ -6,3 +6,8 @@
 h2{font-size:29px}.sub{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #163a3210}.icon{font-size:28px}.card h3{margin:13px 0 7px}.card p{color:var(--muted);line-height:1.7}.dhikr{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;margin:16px 0;box-shadow:0 5px 18px #163a3208}.dhikr-text{font-size:23px;line-height:2;text-align:right}.source{color:var(--muted);font-size:13px;margin-top:12px}.repeat{display:flex;align-items:center;gap:12px;margin-top:18px}.counter{min-width:60px;text-align:center;font-weight:bold}.footer{background:#123f35;color:#e9f2ee;padding:35px 5%;text-align:center;margin-top:30px}.footer nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:12px}
 @media(max-width:800px){.nav{flex-wrap:wrap;padding:10px 15px}.brand{margin-left:0}.links{order:3;width:100%;overflow:auto;white-space:nowrap}.grid{grid-template-columns:repeat(2,1fr)}.hero .logo{font-size:58px}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.hero{padding:50px 15px}.dhikr-text{font-size:19px}.search button{padding:11px 15px}}
+
+/* Morning adhkar Quran cards */
+.dhikr-title{font-weight:800;font-size:1.15rem;margin-bottom:14px}
+.quran-text{line-height:2.1;font-size:1.18rem}
+.dhikr-text{white-space:normal}.quran-text{font-family:Tahoma,"Segoe UI",Arial,sans-serif}
