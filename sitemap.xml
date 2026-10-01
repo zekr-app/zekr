@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://YOUR-DOMAIN.com/</loc></url>
-<url><loc>https://YOUR-DOMAIN.com/morning.html</loc></url>
-<url><loc>https://YOUR-DOMAIN.com/evening.html</loc></url>
-<url><loc>https://YOUR-DOMAIN.com/sleep.html</loc></url>
+
+  <url>
+    <loc>https://zekr-three.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://zekr-three.vercel.app/morning.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zekr-three.vercel.app/evening.html</loc>
+  </url>
+
+  <url>
+    <loc>https://zekr-three.vercel.app/sleep.html</loc>
+  </url>
+
 </urlset>
