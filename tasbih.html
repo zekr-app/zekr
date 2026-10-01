@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التسابيح | ذِكر</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f3e8;color:#183c2c}
+header{background:#1f5d45;color:#fff;padding:24px 16px;text-align:center}
+header h1{margin:0 0 7px;font-size:30px} header p{margin:0;opacity:.9}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+nav a, .reset{border:0;border-radius:12px;padding:9px 14px;background:#fff;color:#1f5d45;text-decoration:none;font-weight:700;cursor:pointer}
+main{max-width:900px;margin:24px auto;padding:0 14px}
+.actions{display:flex;justify-content:center;margin-bottom:18px}
+.card{background:#fff;border:1px solid #e5dfcf;border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 5px 18px rgba(30,70,50,.06);position:relative}
+.num{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#e9f2ec;color:#1f5d45;display:grid;place-items:center;font-weight:bold}
+.zekr{font-size:22px;line-height:2.05;text-align:center;margin:28px 0 12px;font-weight:700}
+.benefit{font-size:14px;line-height:1.8;text-align:center;color:#66756d;margin:0 0 16px}
+.counter{display:block;width:100%;border:0;border-radius:14px;padding:14px;background:#1f5d45;color:#fff;font-size:20px;font-weight:bold;cursor:pointer}
+.counter.done{background:#287a58} .counter b{font-size:15px;opacity:.8}
+footer{text-align:center;color:#6d796f;padding:30px 15px}
+@media(max-width:600px){.zekr{font-size:19px} header h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+<h1>تسابيح</h1>
+<p>ذِكر — اذكر الله في كل وقت.</p>
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="morning.html">أذكار الصباح</a>
+<a href="evening.html">أذكار المساء</a>
+<a href="sleep.html">أذكار النوم</a>
+</nav>
+</header>
+<main>
+<div class="actions"><button class="reset" onclick="resetAll()">إعادة كل العدادات</button></div>
+<article class="card">
+      <div class="num">1</div>
+      <p class="zekr">سُبْحَانَ اللَّهِ</p>
+      <p class="benefit">يكتب له ألف حسنة أو يحط عنه ألف خطيئة.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">2</div>
+      <p class="zekr">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</p>
+      <p class="benefit">حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">3</div>
+      <p class="zekr">سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ</p>
+      <p class="benefit">تَمْلَآَنِ مَا بَيْنَ السَّمَاوَاتِ وَالْأَرْضِ.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">4</div>
+      <p class="zekr">سُبْحَانَ اللهِ العَظِيمِ وَبِحَمْدِهِ</p>
+      <p class="benefit">غرست له نخلة في الجنة (أى عدد).</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">5</div>
+      <p class="zekr">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ ، سُبْحَانَ اللَّهِ الْعَظِيمِ</p>
+      <p class="benefit">ثقيلتان في الميزان حبيبتان إلى الرحمن (أى عدد).</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">6</div>
+      <p class="zekr">لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلُّ شَيْءِ قَدِيرِ.</p>
+      <p class="benefit">كانت له عدل عشر رقاب، وكتبت له مئة حسنة، ومحيت عنه مئة سيئة، وكانت له حرزا من الشيطان.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">7</div>
+      <p class="zekr">لا حَوْلَ وَلا قُوَّةَ إِلا بِاللَّهِ</p>
+      <p class="benefit">كنز من كنوز الجنة (أى عدد).</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">8</div>
+      <p class="zekr">الْحَمْدُ للّهِ رَبِّ الْعَالَمِينَ</p>
+      <p class="benefit">تملأ ميزان العبد بالحسنات.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">9</div>
+      <p class="zekr">الْلَّهُم صَلِّ وَسَلِم وَبَارِك عَلَى سَيِّدِنَا مُحَمَّد</p>
+      <p class="benefit">من صلى على حين يصبح وحين يمسى ادركته شفاعتى يوم القيامة.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">10</div>
+      <p class="zekr">أستغفر الله</p>
+      <p class="benefit">لفعل الرسول صلى الله عليه وسلم.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">11</div>
+      <p class="zekr">سُبْحَانَ الْلَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا الْلَّهُ، وَالْلَّهُ أَكْبَرُ</p>
+      <p class="benefit">أنهن أحب الكلام الى الله، ومكفرات للذنوب، وغرس الجنة، وجنة لقائلهن من النار، وأحب الى النبي عليه السلام مما طلعت عليه الشمس، والْبَاقِيَاتُ الْصَّالِحَات.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">12</div>
+      <p class="zekr">لَا إِلَهَ إِلَّا اللَّهُ</p>
+      <p class="benefit">أفضل الذكر لا إله إلاّ الله.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">13</div>
+      <p class="zekr">الْلَّهُ أَكْبَرُ</p>
+      <p class="benefit">من قال الله أكبر كتبت له عشرون حسنة وحطت عنه عشرون سيئة. الله أكبر من كل شيء.</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">14</div>
+      <p class="zekr">سُبْحَانَ اللَّهِ ، وَالْحَمْدُ لِلَّهِ ، وَلا إِلَهَ إِلا اللَّهُ ، وَاللَّهُ أَكْبَرُ ، اللَّهُمَّ اغْفِرْ لِي ، اللَّهُمَّ ارْحَمْنِي ، اللَّهُمَّ ارْزُقْنِي.</p>
+      <p class="benefit">خير الدنيا والآخرة</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">15</div>
+      <p class="zekr">الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ.</p>
+      <p class="benefit">قَالَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏"‏لَقَدْ رَأَيْتُ اثْنَى عَشَرَ مَلَكًا يَبْتَدِرُونَهَا، أَيُّهُمْ يَرْفَعُهَا‏".</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">16</div>
+      <p class="zekr">اللَّهُ أَكْبَرُ كَبِيرًا ، وَالْحَمْدُ لِلَّهِ كَثِيرًا ، وَسُبْحَانَ اللَّهِ بُكْرَةً وَأَصِيلاً.</p>
+      <p class="benefit">قَالَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ "عَجِبْتُ لَهَا ، فُتِحَتْ لَهَا أَبْوَابُ السَّمَاءِ".</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article><article class="card">
+      <div class="num">17</div>
+      <p class="zekr">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ , وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ , اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ.</p>
+      <p class="benefit">في كل مره تحط عنه عشر خطايا ويرفع له عشر درجات ويصلي الله عليه عشرا وتعرض على الرسول صلى الله عليه وسلم (أى عدد).</p>
+      <button class="counter" data-target="100" onclick="increment(this)">
+        <span>0</span><b>/100</b>
+      </button>
+    </article>
+</main>
+<footer>التسابيح من صفحة التسابيح في إسلام بوك.</footer>
+<script>
+let audioCtx;
+function clickSound(){
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+    o.frequency.value=520; g.gain.value=.035;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime+.045);
+  }catch(e){}
+}
+function increment(btn){
+  const span=btn.querySelector("span");
+  let n=Number(span.textContent);
+  if(n<100){n++; span.textContent=n; clickSound();}
+  if(n===100){btn.classList.add("done"); btn.innerHTML='<span>✓</span> اكتمل 100/100';}
+}
+function resetAll(){
+  document.querySelectorAll(".counter").forEach(btn=>{
+    btn.classList.remove("done");
+    btn.innerHTML='<span>0</span><b>/100</b>';
+  });
+}
+</script>
+</body>
+        </html>
