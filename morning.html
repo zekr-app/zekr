@@ -1,540 +1,479 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0d5c4b">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="أذكار الصباح - 31 ذكرًا مع عداد مستقل وصوت نقرة خفيف">
+  <title>أذكار الصباح — ذِكر</title>
 
-<title>أذكار الصباح — ذِكر</title>
+  <style>
+    :root{
+      --bg:#f7f1e5;
+      --card:#fffdf8;
+      --green:#159b86;
+      --green-dark:#087967;
+      --green-soft:#dff4ed;
+      --text:#193b35;
+      --muted:#6f817c;
+      --border:#e5e0d4;
+      --shadow:0 8px 24px rgba(31,83,72,.08);
+    }
 
-<style>
-:root{
-  --bg:#f8f7f2;
-  --card:#fffdf9;
-  --text:#173f37;
-  --muted:#6b7b76;
-  --green:#0d5c4b;
-  --green2:#174f43;
-  --line:#e4e6df;
-  --soft:#e8f2ec;
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
-*{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Tahoma, Arial, sans-serif;
+      line-height:2;
+    }
 
-html{scroll-behavior:smooth}
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(255,253,248,.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+    }
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Tahoma,"Segoe UI",Arial,sans-serif;
-}
+    .nav{
+      max-width:1050px;
+      margin:auto;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
 
-button{
-  font:inherit;
-}
+    .brand{
+      text-decoration:none;
+      color:var(--green-dark);
+      font-size:22px;
+      font-weight:800;
+    }
 
-.nav{
-  height:74px;
-  background:#fffdf9;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:25px;
-  padding:0 5%;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
+    .links{
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:800;
-  font-size:25px;
-  margin-left:auto;
-  color:var(--text);
-  text-decoration:none;
-}
+    .links a{
+      text-decoration:none;
+      color:var(--text);
+      padding:6px 10px;
+      border-radius:12px;
+      font-size:14px;
+    }
 
-.brand-icon{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:var(--green);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  font-size:22px;
-}
+    .links a:hover{
+      background:var(--green-soft);
+      color:var(--green-dark);
+    }
 
-.nav a{
-  color:var(--text);
-  text-decoration:none;
-}
+    main{
+      max-width:900px;
+      margin:auto;
+      padding:28px 14px 60px;
+    }
 
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:45px 18px 70px;
-}
+    .hero{
+      text-align:center;
+      margin-bottom:22px;
+    }
 
-.hero-title{
-  text-align:center;
-  margin-bottom:35px;
-}
+    .hero h1{
+      margin:0 0 6px;
+      color:var(--green-dark);
+      font-size:32px;
+    }
 
-.hero-title .sun{
-  font-size:48px;
-  margin-bottom:5px;
-}
+    .hero p{
+      margin:0;
+      color:var(--muted);
+    }
 
-.hero-title h1{
-  margin:0;
-  font-size:34px;
-}
+    .actions{
+      display:flex;
+      justify-content:center;
+      margin:18px 0 24px;
+    }
 
-.hero-title p{
-  color:var(--muted);
-  margin-top:10px;
-}
+    .reset-all{
+      border:0;
+      background:var(--green);
+      color:#fff;
+      border-radius:14px;
+      padding:11px 18px;
+      font-size:15px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 5px 15px rgba(21,155,134,.18);
+    }
 
-.dhikr{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:28px 24px;
-  margin-bottom:18px;
-  box-shadow:0 7px 25px rgba(22,58,50,.06);
-  transition:.2s;
-}
+    .reset-all:active{transform:scale(.98)}
 
-.dhikr.completed{
-  border-color:#8bbda8;
-  background:#f5fbf7;
-}
+    .dhikr-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      margin:14px 0;
+      padding:20px;
+      box-shadow:var(--shadow);
+      transition:.2s ease;
+    }
 
-.dhikr-number{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:34px;
-  height:34px;
-  padding:0 10px;
-  border-radius:50%;
-  background:var(--soft);
-  color:var(--green);
-  font-weight:bold;
-  margin-bottom:15px;
-}
+    .dhikr-card.done{
+      border-color:#8dd7c5;
+      background:#fbfffd;
+    }
 
-.dhikr-text{
-  font-size:21px;
-  line-height:2.15;
-  text-align:center;
-  margin:5px 0 22px;
-}
+    .number{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:42px;
+      height:30px;
+      padding:0 9px;
+      border-radius:999px;
+      background:var(--green-soft);
+      color:var(--green-dark);
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:9px;
+    }
 
-.source{
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:18px;
-}
+    .text{
+      font-size:21px;
+      font-weight:600;
+      line-height:2.25;
+      white-space:pre-line;
+    }
 
-.counter-area{
-  text-align:center;
-}
+    .note{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
+      line-height:1.8;
+    }
 
-.counter-btn{
-  width:82px;
-  height:82px;
-  border:0;
-  border-radius:50%;
-  background:linear-gradient(145deg,#0d6b57,#174f43);
-  color:white;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(13,92,75,.22);
-  transition:transform .12s ease,box-shadow .2s ease;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-}
+    .counter-row{
+      margin-top:18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:center;
+    }
 
-.counter-btn:active{
-  transform:scale(.90);
-  box-shadow:0 3px 10px rgba(13,92,75,.18);
-}
+    .counter-btn{
+      border:0;
+      width:100%;
+      min-height:60px;
+      border-radius:17px;
+      background:var(--green);
+      color:#fff;
+      cursor:pointer;
+      font-size:20px;
+      font-weight:800;
+      box-shadow:0 6px 15px rgba(21,155,134,.16);
+      transition:.15s ease;
+      touch-action:manipulation;
+    }
 
-.counter-number{
-  font-size:24px;
-  font-weight:800;
-}
+    .counter-btn:active{
+      transform:scale(.97);
+    }
 
-.counter-total{
-  font-size:12px;
-  opacity:.8;
-}
+    .counter-btn.done-btn{
+      background:var(--green-dark);
+    }
 
-.counter-btn.done{
-  background:#4d8b68;
-}
+    .counter-display{
+      min-width:94px;
+      text-align:center;
+      font-weight:800;
+      color:var(--green-dark);
+      font-size:18px;
+    }
 
-.counter-label{
-  margin-top:9px;
-  font-size:13px;
-  color:var(--muted);
-}
+    .counter-display .current{
+      font-size:25px;
+    }
 
-.reset{
-  display:block;
-  margin:35px auto 0;
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--green);
-  border-radius:25px;
-  padding:10px 20px;
-  cursor:pointer;
-}
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:35px;
+      font-size:13px;
+    }
 
-.footer{
-  background:#123f35;
-  color:#e9f2ee;
-  text-align:center;
-  padding:30px 20px;
-}
-
-@media(max-width:600px){
-  .nav{
-    height:64px;
-    padding:0 15px;
-  }
-
-  .nav .brand{
-    margin:auto;
-  }
-
-  .container{
-    padding:30px 12px 60px;
-  }
-
-  .hero-title h1{
-    font-size:28px;
-  }
-
-  .dhikr{
-    padding:23px 17px;
-  }
-
-  .dhikr-text{
-    font-size:18px;
-    line-height:2.05;
-  }
-}
-</style>
+    @media (max-width:650px){
+      .nav{align-items:flex-start; flex-direction:column}
+      .links{width:100%}
+      .hero h1{font-size:27px}
+      .dhikr-card{padding:16px; border-radius:18px}
+      .text{font-size:18px; line-height:2.15}
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="nav">
-  <a class="brand" href="index.html">
-    <span class="brand-icon">ذ</span>
-    <span>ذِكر</span>
-  </a>
+<header>
+  <nav class="nav">
+    <a class="brand" href="index.html">ذِكر</a>
+    <div class="links">
+      <a href="index.html">الرئيسية</a>
+      <a href="morning.html">أذكار الصباح</a>
+      <a href="evening.html">أذكار المساء</a>
+      <a href="sleep.html">أذكار النوم</a>
+    </div>
+  </nav>
 </header>
 
-<main class="container">
-
-  <section class="hero-title">
-    <div class="sun">☀️</div>
+<main>
+  <section class="hero">
     <h1>أذكار الصباح</h1>
-    <p>ابدأ يومك بذكر الله</p>
+    <p>31 ذكرًا مع عداد مستقل لكل ذكر</p>
   </section>
 
-  <section id="adhkar"></section>
+  <div class="actions">
+    <button class="reset-all" id="resetAll">↻ إعادة جميع العدادات</button>
+  </div>
 
-  <button class="reset" id="resetAll">
-    إعادة جميع العدادات
-  </button>
+  <section id="adhkarList"></section>
 
+  <div class="footer">
+    ذِكر — اذكر الله في كل وقت.
+  </div>
 </main>
 
-<footer class="footer">
-  <strong>ذِكر</strong>
-  <div>اذكر الله في كل وقت.</div>
-</footer>
-
 <script>
-
 const adhkar = [
-
-{
-text:`اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ`,
-count:1,
-source:"آية الكرسي — البقرة: 255"
-},
-
-{
-text:`قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ`,
-count:3,
-source:"سورة الإخلاص"
-},
-
-{
-text:`قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِنْ شَرِّ مَا خَلَقَ ۝ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ`,
-count:3,
-source:"سورة الفلق"
-},
-
-{
-text:`قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ ۝ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ`,
-count:3,
-source:"سورة الناس"
-},
-
-{
-text:`أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ. رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ. رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ`,
-count:1,
-source:"رواه مسلم"
-},
-
-{
-text:`اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ`,
-count:1,
-source:"رواه أبو داود والترمذي"
-},
-
-{
-text:`اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ`,
-count:1,
-source:"سيد الاستغفار — رواه البخاري"
-},
-
-{
-text:`رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا`,
-count:3,
-source:"رواه أبو داود والترمذي"
-},
-
-{
-text:`اللَّهُمَّ إِنِّي أَصْبَحْتُ أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلَائِكَتَكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَٰهَ إِلَّا أَنْتَ، وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ`,
-count:4,
-source:"رواه أبو داود"
-},
-
-{
-text:`اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ، فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ`,
-count:1,
-source:"رواه أبو داود"
-},
-
-{
-text:`اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَٰهَ إِلَّا أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، لَا إِلَٰهَ إِلَّا أَنْتَ`,
-count:3,
-source:"رواه أبو داود"
-},
-
-{
-text:`حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ`,
-count:7,
-source:"التوبة: 129"
-},
-
-{
-text:`بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ`,
-count:3,
-source:"رواه أبو داود والترمذي"
-},
-
-{
-text:`اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ`,
-count:1,
-source:"رواه أبو داود"
-},
-
-{
-text:`اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ، فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ`,
-count:1,
-source:"رواه أبو داود والترمذي"
-},
-
-{
-text:`يَا حَيُّ يَا قَيُّومُ، بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ، وَلَا تَكِلْنِي إِلَىٰ نَفْسِي طَرْفَةَ عَيْنٍ`,
-count:1,
-source:"رواه النسائي"
-},
-
-{
-text:`سُبْحَانَ اللَّهِ وَبِحَمْدِهِ`,
-count:100,
-source:"رواه مسلم"
-},
-
-{
-text:`لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ`,
-count:10,
-source:"ورد في فضلها أحاديث صحيحة"
-},
-
-{
-text:`أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ`,
-count:100,
-source:"رواه البخاري ومسلم بمعانٍ ثابتة في كثرة الاستغفار"
-}
-
+  {
+    text:`اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ، لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ، مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ، وَلاَ يَؤُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.`,
+    count:1,
+    note:"آية الكرسي — البقرة: 255"
+  },
+  {
+    text:`قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.`,
+    count:3,
+    note:"سورة الإخلاص"
+  },
+  {
+    text:`قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ.`,
+    count:3,
+    note:"سورة الفلق"
+  },
+  {
+    text:`قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.`,
+    count:3,
+    note:"سورة الناس"
+  },
+  {
+    text:`أَصْـبَحْنا وَأَصْـبَحَ المُـلْكُ لله وَالحَمدُ لله، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُـلكُ ولهُ الحَمْـد، وهُوَ على كلّ شَيءٍ قدير، رَبِّ أسْـأَلُـكَ خَـيرَ ما في هـذا اليوم وَخَـيرَ ما بَعْـدَه، وَأَعـوذُ بِكَ مِنْ شَـرِّ ما في هـذا اليوم وَشَرِّ ما بَعْـدَه، رَبِّ أَعـوذُبِكَ مِنَ الْكَسَـلِ وَسـوءِ الْكِـبَر، رَبِّ أَعـوذُ بِكَ مِنْ عَـذابٍ في النّـارِ وَعَـذابٍ في القَـبْر.`,
+    count:1
+  },
+  {
+    text:`اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ، خَلَقْتَنـي وَأَنا عَبْـدُك، وَأَنا عَلـى عَهْدِكَ وَوَعْـدِكَ ما اسْتَـطَعْـت، أَعـوذُبِكَ مِنْ شَـرِّ ما صَنَـعْت، أَبـوءُ لَـكَ بِنِعْـمَتِـكَ عَلَـيَّ وَأَبـوءُ بِذَنْـبي فَاغْفـِرْ لي فَإِنَّـهُ لا يَغْـفِرُ الذُّنـوبَ إِلاّ أَنْتَ.`,
+    count:1,
+    note:"سيد الاستغفار"
+  },
+  {
+    text:`رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً.`,
+    count:3
+  },
+  {
+    text:`اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك، وَمَلَائِكَتَكَ، وَجَمـيعَ خَلْـقِك، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك، وَأَنَّ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك.`,
+    count:4
+  },
+  {
+    text:`اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْقِك، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك، فَلَـكَ الْحَمْدُ وَلَـكَ الشُّكْـر.`,
+    count:1
+  },
+  {
+    text:`حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ وَهُوَ رَبُّ العَرْشِ العَظـيم.`,
+    count:7
+  },
+  {
+    text:`بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ في الأرْضِ وَلا في السّمـاءِ وَهـوَ السّمـيعُ العَلـيم.`,
+    count:3
+  },
+  {
+    text:`اللّهُـمَّ بِكَ أَصْـبَحْنا وَبِكَ أَمْسَـينا، وَبِكَ نَحْـيا وَبِكَ نَمُـوتُ وَإِلَـيْكَ النُّـشُور.`,
+    count:1
+  },
+  {
+    text:`أَصْبَـحْـنا عَلَى فِطْرَةِ الإسْلاَمِ، وَعَلَى كَلِمَةِ الإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِينَا إبْرَاهِيمَ حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ المُشْرِكِينَ.`,
+    count:1
+  },
+  {
+    text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ عَدَدَ خَلْـقِه، وَرِضـا نَفْسِـه، وَزِنَةَ عَـرْشِـه، وَمِـدادَ كَلِمـاتِـه.`,
+    count:3
+  },
+  {
+    text:`اللّهُـمَّ عافِـني في بَدَنـي، اللّهُـمَّ عافِـني في سَمْـعي، اللّهُـمَّ عافِـني في بَصَـري، لا إلهَ إلاّ أَنْـتَ.`,
+    count:3
+  },
+  {
+    text:`اللّهُـمَّ إِنّـي أَعـوذُ بِكَ مِنَ الْكُـفر، وَالفَـقْر، وَأَعـوذُ بِكَ مِنْ عَذابِ القَـبْر، لا إلهَ إلاّ أَنْـتَ.`,
+    count:3
+  },
+  {
+    text:`اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في الدُّنْـيا وَالآخِـرَة، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في ديني وَدُنْـيايَ وَأهْـلي وَمالـي، اللّهُـمَّ اسْتُـرْ عـوْراتي وَآمِـنْ رَوعاتـي، اللّهُـمَّ احْفَظْـني مِن بَـينِ يَدَيَّ وَمِن خَلْفـي وَعَن يَمـيني وَعَن شِمـالي، وَمِن فَوْقـي، وَأَعـوذُ بِعَظَمَـتِكَ أَن أُغْـتالَ مِن تَحْتـي.`,
+    count:1
+  },
+  {
+    text:`يَا حَيُّ يَا قيُّومُ بِرَحْمَتِكَ أسْتَغِيثُ، أصْلِحْ لِي شَأنِي كُلَّهُ وَلاَ تَكِلْنِي إلَى نَفْسِي طَـرْفَةَ عَيْنٍ.`,
+    count:3
+  },
+  {
+    text:`أَصْبَـحْـنا وَأَصْبَـحْ المُـلكُ للهِ رَبِّ العـالَمـين، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ خَـيْرَ هـذا الـيَوْم، فَـتْحَهُ، وَنَصْـرَهُ، وَنـورَهُ وَبَـرَكَتَـهُ، وَهُـداهُ، وَأَعـوذُ بِـكَ مِـنْ شَـرِّ ما فـيهِ وَشَـرِّ ما بَعْـدَه.`,
+    count:1
+  },
+  {
+    text:`اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِرْكِهِ، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم.`,
+    count:1
+  },
+  {
+    text:`أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق.`,
+    count:3
+  },
+  {
+    text:`اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ.`,
+    count:10
+  },
+  {
+    text:`اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ.`,
+    count:3
+  },
+  {
+    text:`اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الهَمِّ وَالحَزَنِ، وَأَعُوذُ بِكَ مِنَ العَجْزِ وَالكَسَلِ، وَأَعُوذُ بِكَ مِنَ الجُبْنِ وَالبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ.`,
+    count:3
+  },
+  {
+    text:`أسْتَغْفِرُ اللهَ العَظِيمَ الَّذِي لاَ إلَهَ إلاَّ هُوَ، الحَيُّ القَيُّومُ، وَأتُوبُ إلَيهِ.`,
+    count:3
+  },
+  {
+    text:`يَا رَبِّ، لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ، وَلِعَظِيمِ سُلْطَانِكَ.`,
+    count:3
+  },
+  {
+    text:`اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا.`,
+    count:1
+  },
+  {
+    text:`اللَّهُمَّ أَنْتَ رَبِّي لا إِلَهَ إِلا أَنْتَ، عَلَيْكَ تَوَكَّلْتُ، وَأَنْتَ رَبُّ الْعَرْشِ الْعَظِيمِ، مَا شَاءَ اللَّهُ كَانَ، وَمَا لَمْ يَشَأْ لَمْ يَكُنْ، وَلا حَوْلَ وَلا قُوَّةَ إِلا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ، أَعْلَمُ أَنَّ اللَّهَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، وَأَنَّ اللَّهَ قَدْ أَحَاطَ بِكُلِّ شَيْءٍ عِلْمًا، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا، إِنَّ رَبِّي عَلَى صِرَاطٍ مُسْتَقِيمٍ.`,
+    count:1
+  },
+  {
+    text:`لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ.`,
+    count:100
+  },
+  {
+    text:`سُبْحـانَ اللهِ وَبِحَمْـدِهِ.`,
+    count:100
+  },
+  {
+    text:`أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ`,
+    count:100
+  }
 ];
 
-const container = document.getElementById("adhkar");
+const list = document.getElementById("adhkarList");
+const resetAll = document.getElementById("resetAll");
+const progress = new Array(adhkar.length).fill(0);
+
+let audioContext = null;
 
 function playClick(){
-
   try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
 
-    const AudioContext =
-      window.AudioContext || window.webkitAudioContext;
+    if(!audioContext) audioContext = new AC();
 
-    if(!AudioContext) return;
+    if(audioContext.state === "suspended"){
+      audioContext.resume();
+    }
 
-    const audio = new AudioContext();
-
-    const oscillator = audio.createOscillator();
-    const gain = audio.createGain();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
 
     oscillator.type = "sine";
-    oscillator.frequency.value = 620;
+    oscillator.frequency.setValueAtTime(620, audioContext.currentTime);
 
-    gain.gain.setValueAtTime(
-      0.035,
-      audio.currentTime
-    );
-
+    gain.gain.setValueAtTime(0.035, audioContext.currentTime);
     gain.gain.exponentialRampToValueAtTime(
       0.001,
-      audio.currentTime + 0.07
+      audioContext.currentTime + 0.07
     );
 
     oscillator.connect(gain);
-    gain.connect(audio.destination);
+    gain.connect(audioContext.destination);
 
     oscillator.start();
-
-    oscillator.stop(
-      audio.currentTime + 0.07
-    );
-
+    oscillator.stop(audioContext.currentTime + 0.07);
   }catch(e){}
-
 }
 
-function createDhikr(item,index){
+function render(){
+  list.innerHTML = "";
 
-  const card = document.createElement("article");
+  adhkar.forEach((item,index)=>{
+    const card = document.createElement("article");
+    card.className = "dhikr-card";
+    card.id = `dhikr-${index+1}`;
 
-  card.className = "dhikr";
+    const done = progress[index] >= item.count;
 
-  card.innerHTML = `
-    <div class="dhikr-number">${index + 1}</div>
-
-    <div class="dhikr-text">${item.text}</div>
-
-    <div class="source">${item.source} — ${item.count} ${item.count === 1 ? "مرة" : "مرات"}</div>
-
-    <div class="counter-area">
-
-      <button
-        class="counter-btn"
-        type="button"
-        aria-label="تكرار الذكر"
-      >
-        <span class="counter-number">0</span>
-        <span class="counter-total">/${item.count}</span>
-      </button>
-
-      <div class="counter-label">
-        اضغط للتكرار
+    card.innerHTML = `
+      <div class="number">الذكر ${index+1}</div>
+      <div class="text">${item.text}</div>
+      ${item.note ? `<div class="note">${item.note}</div>` : ""}
+      <div class="counter-row">
+        <button class="counter-btn ${done ? "done-btn" : ""}" aria-label="تسبيح الذكر ${index+1}">
+          ${done ? "✓ تم الذكر" : "اضغط للتكرار"}
+        </button>
+        <div class="counter-display" aria-live="polite">
+          <span class="current">${done ? "✓" : progress[index]}</span>
+          <span> / ${item.count}</span>
+        </div>
       </div>
+    `;
 
-    </div>
-  `;
+    const button = card.querySelector(".counter-btn");
 
-  const button =
-    card.querySelector(".counter-btn");
+    button.addEventListener("click", ()=>{
+      if(progress[index] >= item.count) return;
 
-  const number =
-    card.querySelector(".counter-number");
+      playClick();
+      progress[index]++;
 
-  const label =
-    card.querySelector(".counter-label");
+      if(progress[index] >= item.count){
+        progress[index] = item.count;
+      }
 
-  let current = 0;
+      render();
+    });
 
-  button.addEventListener("click",()=>{
-
-    if(current >= item.count) return;
-
-    current++;
-
-    number.textContent = current;
-
-    playClick();
-
-    if(current >= item.count){
-
-      button.classList.add("done");
-
-      label.textContent = "تم الذكر ✓";
-
-      card.classList.add("completed");
-
-    }
-
+    list.appendChild(card);
   });
-
-  return card;
 }
 
-adhkar.forEach((item,index)=>{
-  container.appendChild(
-    createDhikr(item,index)
-  );
+resetAll.addEventListener("click", ()=>{
+  progress.fill(0);
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
 });
 
-document
-.getElementById("resetAll")
-.addEventListener("click",()=>{
-
-  document
-  .querySelectorAll(".dhikr")
-  .forEach(card=>{
-
-    card.classList.remove("completed");
-
-    const button =
-      card.querySelector(".counter-btn");
-
-    const number =
-      card.querySelector(".counter-number");
-
-    const label =
-      card.querySelector(".counter-label");
-
-    button.classList.remove("done");
-
-    number.textContent = "0";
-
-    label.textContent = "اضغط للتكرار";
-
-  });
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-});
-
+render();
 </script>
 
 </body>
