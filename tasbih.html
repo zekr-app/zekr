@@ -3,178 +3,243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>التسبيح | ذِكر</title>
 
 <style>
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f7f3e8;
-  color:#183c2c;
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #f7f3e8;
+  color: #183c2c;
 }
 
-header{
-  background:#1f5d45;
-  color:#fff;
-  padding:24px 16px;
-  text-align:center;
+header {
+  background: #174c36;
+  color: white;
+  text-align: center;
+  padding: 22px 15px;
 }
 
-header h1{
-  margin:0 0 8px;
-  font-size:30px;
+header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
 }
 
-header p{
-  margin:0;
-  opacity:.9;
+header p {
+  margin: 0;
+  color: #dcebe2;
 }
 
-nav{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:16px;
+nav {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
 }
 
-nav a{
-  background:#fff;
-  color:#1f5d45;
-  text-decoration:none;
-  padding:9px 14px;
-  border-radius:12px;
-  font-weight:bold;
+nav a {
+  display: inline-block;
+  color: #174c36;
+  text-decoration: none;
+  margin: 4px 7px;
+  font-weight: bold;
 }
 
-main{
-  max-width:900px;
-  margin:24px auto;
-  padding:0 14px;
+.container {
+  max-width: 850px;
+  margin: 25px auto;
+  padding: 0 15px;
 }
 
-.actions{
-  text-align:center;
-  margin-bottom:20px;
+.card {
+  background: white;
+  border-radius: 22px;
+  padding: 25px 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.06);
+  text-align: center;
 }
 
-.reset{
-  border:0;
-  border-radius:14px;
-  padding:13px 22px;
-  background:#1f9d8a;
-  color:#fff;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
+/* اسم الذكر */
+.zikr-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 18px;
 }
 
-.card{
-  position:relative;
-  background:#fff;
-  border:1px solid #e5dfcf;
-  border-radius:20px;
-  padding:24px 20px;
-  margin:16px 0;
-  box-shadow:0 5px 18px rgba(30,60,45,.08);
-  text-align:center;
+/* المسبحة */
+.tasbih {
+  position: relative;
+  width: min(340px, 85vw);
+  aspect-ratio: 1;
+  margin: 0 auto 20px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.number{
-  position:absolute;
-  top:14px;
-  right:14px;
-  background:#e9f5f0;
-  color:#1f5d45;
-  padding:8px 12px;
-  border-radius:50px;
-  font-size:14px;
-  font-weight:bold;
+.ring {
+  position: absolute;
+  inset: 18px;
+  border: 6px solid #d7c99d;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 8px #eee5cf,
+    0 4px 12px rgba(0,0,0,.08);
 }
 
-.zekr{
-  font-size:24px;
-  line-height:2;
-  font-weight:bold;
-  margin:30px 0 10px;
+/* الخرز */
+.bead {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    #2f7d59,
+    #124b37
+  );
+
+  border: 3px solid #d8bd76;
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.18);
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
 }
 
-.benefit{
-  font-size:14px;
-  line-height:1.8;
-  color:#66756d;
-  margin:0 0 18px;
+.bead.active {
+  transform:
+    translate(-50%, -50%)
+    scale(1.25);
+
+  filter: brightness(1.3);
 }
 
-.counter{
-  display:flex;
-  align-items:center;
-  gap:12px;
+/* المنتصف */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 115px;
+  height: 115px;
+
+  border-radius: 50%;
+
+  background: #fffdf7;
+
+  border: 2px solid #d8c99f;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
 }
 
-.count{
-  min-width:75px;
-  font-size:20px;
-  font-weight:bold;
-  color:#167b6d;
+.number {
+  font-size: 34px;
+  font-weight: bold;
+  color: #174c36;
 }
 
-.count-button{
-  flex:1;
-  border:0;
-  border-radius:14px;
-  padding:16px;
-  background:#1f9d8a;
-  color:#fff;
-  font-size:20px;
-  font-weight:bold;
-  cursor:pointer;
+.total {
+  font-size: 13px;
+  color: #6d7972;
+  margin-top: 3px;
 }
 
-.count-button:active{
-  transform:scale(.98);
+/* الأزرار */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.count-button.done{
-  background:#287a58;
+.tasbih-btn {
+  border: 0;
+  border-radius: 15px;
+
+  background: #174c36;
+  color: white;
+
+  padding: 14px 40px;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  min-width: 180px;
 }
 
-footer{
-  text-align:center;
-  color:#6d796f;
-  padding:30px 15px;
+.tasbih-btn:active {
+  transform: scale(.96);
 }
 
-footer a{
-  color:#1f5d45;
-  text-decoration:none;
-  margin:0 6px;
+.reset-btn {
+  border: 1px solid #cfc6b3;
+  border-radius: 15px;
+
+  background: white;
+  color: #174c36;
+
+  padding: 13px 25px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
 }
 
-@media(max-width:600px){
-  header h1{
-    font-size:25px;
+.status {
+  margin-top: 15px;
+  color: #68766e;
+  font-size: 14px;
+}
+
+.done {
+  color: #247b43;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #6b776f;
+}
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 24px;
   }
 
-  .zekr{
-    font-size:20px;
+  nav a {
+    font-size: 14px;
   }
 
-  .counter{
-    flex-direction:column;
+  .bead {
+    width: 31px;
+    height: 31px;
   }
 
-  .count{
-    order:2;
-  }
-
-  .count-button{
-    width:100%;
+  .center {
+    width: 105px;
+    height: 105px;
   }
 }
 </style>
@@ -183,317 +248,251 @@ footer a{
 <body>
 
 <header>
-
   <h1>التسبيح</h1>
-  <p>سبّح واذكر الله بسهولة</p>
-
-  <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="morning.html">أذكار الصباح</a>
-    <a href="evening.html">أذكار المساء</a>
-    <a href="sleep.html">أذكار النوم</a>
-  </nav>
-
+  <p>ذِكر — اذكر الله في كل وقت.</p>
 </header>
 
+<nav>
+  <a href="index.html">الرئيسية</a>
+  <a href="morning.html">أذكار الصباح</a>
+  <a href="evening.html">أذكار المساء</a>
+  <a href="sleep.html">أذكار النوم</a>
+  <a href="tasbih.html">التسبيح</a>
+</nav>
 
-<main>
+<main class="container">
 
-  <div class="actions">
-    <button class="reset" onclick="resetAll()">
-      ↻ إعادة جميع العدادات
-    </button>
-  </div>
+  <section class="card">
 
-
-  <!-- التسبيح الأول -->
-  <div class="card">
-
-    <div class="number">الذكر 1</div>
-
-    <div class="zekr">
-      سُبْحَانَ اللهِ
+    <div class="zikr-name">
+      سبحان الله
     </div>
 
-    <p class="benefit">
-      33 مرة
-    </p>
+    <div class="tasbih" id="tasbih">
 
-    <div class="counter">
+      <div class="ring"></div>
 
-      <div class="count" id="count0">
-        0 / 33
+      <div class="center">
+        <div>
+          <div class="number" id="number">0</div>
+          <div class="total">من 33</div>
+        </div>
       </div>
 
+    </div>
+
+    <div class="buttons">
+
       <button
-        class="count-button"
-        id="button0"
-        onclick="increase(0)">
-        اضغط للتكرار
+        class="tasbih-btn"
+        id="tasbihButton"
+        type="button">
+        تسبيح
+      </button>
+
+      <button
+        class="reset-btn"
+        id="resetButton"
+        type="button">
+        إعادة
       </button>
 
     </div>
 
-  </div>
-
-
-  <!-- التسبيح الثاني -->
-  <div class="card">
-
-    <div class="number">الذكر 2</div>
-
-    <div class="zekr">
-      الْحَمْدُ لِلَّهِ
+    <div
+      class="status"
+      id="status"
+      aria-live="polite">
+      0 / 33
     </div>
 
-    <p class="benefit">
-      33 مرة
-    </p>
-
-    <div class="counter">
-
-      <div class="count" id="count1">
-        0 / 33
-      </div>
-
-      <button
-        class="count-button"
-        id="button1"
-        onclick="increase(1)">
-        اضغط للتكرار
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- التسبيح الثالث -->
-  <div class="card">
-
-    <div class="number">الذكر 3</div>
-
-    <div class="zekr">
-      اللهُ أَكْبَرُ
-    </div>
-
-    <p class="benefit">
-      34 مرة
-    </p>
-
-    <div class="counter">
-
-      <div class="count" id="count2">
-        0 / 34
-      </div>
-
-      <button
-        class="count-button"
-        id="button2"
-        onclick="increase(2)">
-        اضغط للتكرار
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- التسبيح الرابع -->
-  <div class="card">
-
-    <div class="number">الذكر 4</div>
-
-    <div class="zekr">
-      لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ
-    </div>
-
-    <p class="benefit">
-      100 مرة
-    </p>
-
-    <div class="counter">
-
-      <div class="count" id="count3">
-        0 / 100
-      </div>
-
-      <button
-        class="count-button"
-        id="button3"
-        onclick="increase(3)">
-        اضغط للتكرار
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- التسبيح الخامس -->
-  <div class="card">
-
-    <div class="number">الذكر 5</div>
-
-    <div class="zekr">
-      أَسْتَغْفِرُ اللهَ
-    </div>
-
-    <p class="benefit">
-      100 مرة
-    </p>
-
-    <div class="counter">
-
-      <div class="count" id="count4">
-        0 / 100
-      </div>
-
-      <button
-        class="count-button"
-        id="button4"
-        onclick="increase(4)">
-        اضغط للتكرار
-      </button>
-
-    </div>
-
-  </div>
+  </section>
 
 </main>
 
-
 <footer>
-
-  <strong>ذِكر</strong>
-
-  <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="morning.html">الصباح</a>
-    <a href="evening.html">المساء</a>
-    <a href="sleep.html">النوم</a>
-  </nav>
-
-  <p>
-    اذكر الله في كل وقت 🤍
-  </p>
-
+  ذِكر — اذكر الله في كل وقت.
 </footer>
-
 
 <script>
 
-const targets = [33, 33, 34, 100, 100];
+const tasbih = document.getElementById("tasbih");
+const button = document.getElementById("tasbihButton");
+const resetButton = document.getElementById("resetButton");
 
-let counts = [0, 0, 0, 0, 0];
+const number = document.getElementById("number");
+const status = document.getElementById("status");
+
+let count = 0;
+const total = 33;
+
+/* إنشاء الخرز */
+
+const beadsCount = 24;
+
+for (let i = 0; i < beadsCount; i++) {
+
+  const bead = document.createElement("div");
+
+  bead.className = "bead";
+
+  const angle =
+    (i / beadsCount) *
+    Math.PI *
+    2 -
+    Math.PI / 2;
+
+  const x =
+    50 +
+    42 *
+    Math.cos(angle);
+
+  const y =
+    50 +
+    42 *
+    Math.sin(angle);
+
+  bead.style.left = x + "%";
+  bead.style.top = y + "%";
+
+  tasbih.appendChild(bead);
+}
+
+const beads =
+  document.querySelectorAll(".bead");
 
 
-// صوت خفيف عند الضغط
-function clickSound(){
+/* صوت النقرة */
 
-  try{
+function clickSound() {
 
-    const audioContext =
-      new (window.AudioContext || window.webkitAudioContext)();
+  try {
+
+    const AudioContext =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+    const audio =
+      new AudioContext();
 
     const oscillator =
-      audioContext.createOscillator();
+      audio.createOscillator();
 
     const gain =
-      audioContext.createGain();
+      audio.createGain();
+
+    oscillator.frequency.value = 520;
+
+    gain.gain.value = 0.035;
 
     oscillator.connect(gain);
-    gain.connect(audioContext.destination);
 
-    oscillator.frequency.value = 600;
-    gain.gain.setValueAtTime(
-      0.04,
-      audioContext.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.001,
-      audioContext.currentTime + 0.06
-    );
+    gain.connect(audio.destination);
 
     oscillator.start();
 
     oscillator.stop(
-      audioContext.currentTime + 0.06
+      audio.currentTime + 0.045
     );
 
-  }catch(e){}
+  } catch (error) {}
 
 }
 
 
-// زيادة العداد
-function increase(index){
+/* تحديث الشكل */
 
-  if(counts[index] >= targets[index]){
+function update() {
+
+  number.textContent = count;
+
+  status.textContent =
+    count + " / " + total;
+
+  beads.forEach((bead, index) => {
+
+    bead.classList.remove("active");
+
+    if (
+      count > 0 &&
+      index === ((count - 1) % beadsCount)
+    ) {
+
+      bead.classList.add("active");
+
+    }
+
+  });
+
+  if (count >= total) {
+
+    status.textContent = "تم التسبيح ✓";
+
+    status.classList.add("done");
+
+    button.textContent = "تم ✓";
+
+  } else {
+
+    status.classList.remove("done");
+
+    button.textContent = "تسبيح";
+
+  }
+
+}
+
+
+/* التسبيح */
+
+function doTasbih() {
+
+  if (count >= total) {
     return;
   }
 
-  counts[index]++;
+  count++;
 
   clickSound();
 
-  update(index);
+  update();
 
 }
 
 
-// تحديث العداد
-function update(index){
+/* الضغط على الزر */
 
-  const countElement =
-    document.getElementById("count" + index);
+button.addEventListener(
+  "click",
+  doTasbih
+);
 
-  const buttonElement =
-    document.getElementById("button" + index);
 
-  if(counts[index] >= targets[index]){
+/* الضغط على المسبحة نفسها */
 
-    countElement.textContent = "✓ تم";
+tasbih.addEventListener(
+  "click",
+  doTasbih
+);
 
-    buttonElement.textContent = "تم الذكر ✓";
 
-    buttonElement.classList.add("done");
+/* إعادة */
 
-  }else{
+resetButton.addEventListener(
+  "click",
+  function() {
 
-    countElement.textContent =
-      counts[index] + " / " + targets[index];
+    count = 0;
+
+    update();
 
   }
+);
 
-}
 
+/* تشغيل أولي */
 
-// إعادة جميع العدادات
-function resetAll(){
-
-  counts = [0, 0, 0, 0, 0];
-
-  for(let i = 0; i < targets.length; i++){
-
-    const countElement =
-      document.getElementById("count" + i);
-
-    const buttonElement =
-      document.getElementById("button" + i);
-
-    countElement.textContent =
-      "0 / " + targets[i];
-
-    buttonElement.textContent =
-      "اضغط للتكرار";
-
-    buttonElement.classList.remove("done");
-
-  }
-
-}
+update();
 
 </script>
 
