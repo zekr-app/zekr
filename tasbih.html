@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>التسبيح | ذِكر</title>
 
 <style>
@@ -14,232 +15,227 @@ body {
   margin: 0;
   font-family: Tahoma, Arial, sans-serif;
   background: #f7f3e8;
-  color: #183c2c;
+  color: #174c36;
 }
 
+/* الهيدر */
 header {
   background: #174c36;
   color: white;
   text-align: center;
-  padding: 22px 15px;
+  padding: 28px 15px;
 }
 
 header h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
+  margin: 0;
+  font-size: 32px;
 }
 
 header p {
-  margin: 0;
-  color: #dcebe2;
+  margin: 8px 0 0;
+  font-size: 16px;
+  opacity: .9;
 }
 
+/* القائمة */
 nav {
   background: white;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 16px 10px;
+  border-bottom: 1px solid #eee;
 }
 
 nav a {
-  display: inline-block;
   color: #174c36;
   text-decoration: none;
-  margin: 4px 7px;
   font-weight: bold;
+  font-size: 16px;
 }
 
+/* المحتوى */
 .container {
-  max-width: 850px;
-  margin: 25px auto;
+  max-width: 1000px;
+  margin: 30px auto;
   padding: 0 15px;
 }
 
-.card {
+/* بطاقة المسبحة */
+.tasbih-box {
   background: white;
-  border-radius: 22px;
-  padding: 25px 15px;
-  box-shadow: 0 5px 18px rgba(0,0,0,.06);
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 30px rgba(30,70,50,.08);
   text-align: center;
 }
 
-/* اسم الذكر */
-.zikr-name {
-  font-size: 22px;
+.tasbih-title {
+  font-size: 27px;
   font-weight: bold;
-  margin-bottom: 18px;
+  margin-bottom: 25px;
 }
 
 /* المسبحة */
-.tasbih {
-  position: relative;
-  width: min(340px, 85vw);
-  aspect-ratio: 1;
-  margin: 0 auto 20px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.ring {
-  position: absolute;
-  inset: 18px;
-  border: 6px solid #d7c99d;
+.beads {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 25px;
   border-radius: 50%;
-  box-shadow:
-    inset 0 0 0 8px #eee5cf,
-    0 4px 12px rgba(0,0,0,.08);
+  position: relative;
 }
 
-/* الخرز */
+/* الحبات */
 .bead {
   position: absolute;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
+  background: #176043;
+  border: 3px solid #d7bd70;
   border-radius: 50%;
-
-  background: linear-gradient(
-    145deg,
-    #2f7d59,
-    #124b37
-  );
-
-  border: 3px solid #d8bd76;
-
-  box-shadow:
-    0 4px 8px rgba(0,0,0,.18);
-
-  transform: translate(-50%, -50%);
-
-  transition:
-    transform .2s ease,
-    filter .2s ease;
+  box-shadow: 0 3px 7px rgba(0,0,0,.15);
 }
 
-.bead.active {
-  transform:
-    translate(-50%, -50%)
-    scale(1.25);
-
-  filter: brightness(1.3);
-}
-
-/* المنتصف */
-.center {
+/* العداد */
+.center-counter {
   position: absolute;
-  left: 50%;
+  width: 135px;
+  height: 135px;
   top: 50%;
-
+  left: 50%;
   transform: translate(-50%, -50%);
-
-  width: 115px;
-  height: 115px;
-
   border-radius: 50%;
-
   background: #fffdf7;
-
-  border: 2px solid #d8c99f;
-
+  border: 2px solid #ddd2ad;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  align-items: center;
 }
 
-.number {
-  font-size: 34px;
+.center-counter .number {
+  font-size: 40px;
   font-weight: bold;
   color: #174c36;
 }
 
-.total {
-  font-size: 13px;
-  color: #6d7972;
-  margin-top: 3px;
+.center-counter .small {
+  font-size: 14px;
+  color: #777;
 }
 
-/* الأزرار */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.tasbih-btn {
+/* زر العد */
+.count-button {
   border: 0;
-  border-radius: 15px;
-
-  background: #174c36;
+  background: #176043;
   color: white;
-
-  padding: 14px 40px;
-
-  font-family: inherit;
-  font-size: 18px;
+  border-radius: 16px;
+  padding: 15px 35px;
+  font-size: 20px;
   font-weight: bold;
-
   cursor: pointer;
-
-  min-width: 180px;
+  margin-bottom: 25px;
+  min-width: 220px;
 }
 
-.tasbih-btn:active {
-  transform: scale(.96);
+.count-button:active {
+  transform: scale(.97);
 }
 
-.reset-btn {
-  border: 1px solid #cfc6b3;
-  border-radius: 15px;
+.count-button.done {
+  background: #287a58;
+}
 
+/* عبارة الذكر */
+.phrase {
+  background: #f1f7f2;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* أزرار الأذكار */
+.dhikr-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dhikr-card {
+  border: 1px solid #dfe8df;
+  border-radius: 18px;
+  padding: 20px 12px;
+  background: #fbfdfb;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.dhikr-card:hover {
+  transform: translateY(-3px);
+}
+
+.dhikr-card.active {
+  background: #176043;
+  color: white;
+}
+
+.dhikr-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dhikr-count {
+  font-size: 16px;
+}
+
+/* زر إعادة */
+.reset {
+  margin-top: 25px;
   background: white;
   color: #174c36;
-
-  padding: 13px 25px;
-
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: bold;
-
+  border: 1px solid #cfc7ad;
+  border-radius: 13px;
+  padding: 12px 25px;
+  font-size: 17px;
   cursor: pointer;
 }
 
-.status {
-  margin-top: 15px;
-  color: #68766e;
-  font-size: 14px;
-}
-
-.done {
-  color: #247b43;
-  font-weight: bold;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #6b776f;
-}
-
-@media (max-width: 600px) {
+/* الموبايل */
+@media(max-width:700px) {
 
   header h1 {
-    font-size: 24px;
+    font-size: 26px;
+  }
+
+  nav {
+    gap: 14px;
   }
 
   nav a {
     font-size: 14px;
   }
 
-  .bead {
-    width: 31px;
-    height: 31px;
+  .beads {
+    width: 270px;
+    height: 270px;
   }
 
-  .center {
-    width: 105px;
-    height: 105px;
+  .bead {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dhikr-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tasbih-title {
+    font-size: 23px;
   }
 }
 </style>
@@ -249,7 +245,7 @@ footer {
 
 <header>
   <h1>التسبيح</h1>
-  <p>ذِكر — اذكر الله في كل وقت.</p>
+  <p>سبّح واذكر الله</p>
 </header>
 
 <nav>
@@ -262,124 +258,162 @@ footer {
 
 <main class="container">
 
-  <section class="card">
+<div class="tasbih-box">
 
-    <div class="zikr-name">
-      سبحان الله
+  <div class="tasbih-title" id="title">
+    سبحان الله
+  </div>
+
+  <div class="beads" id="beads">
+
+    <div class="center-counter">
+      <div class="number" id="counter">0</div>
+      <div class="small" id="targetText">من 33</div>
     </div>
 
-    <div class="tasbih" id="tasbih">
+  </div>
 
-      <div class="ring"></div>
+  <div class="phrase" id="phrase">
+    سبحان الله
+  </div>
 
-      <div class="center">
-        <div>
-          <div class="number" id="number">0</div>
-          <div class="total">من 33</div>
-        </div>
-      </div>
+  <button class="count-button" id="countButton" onclick="countDhikr()">
+    اضغط للتسبيح
+  </button>
 
+  <div class="dhikr-list">
+
+    <div class="dhikr-card active" onclick="selectDhikr(0)">
+      <div class="dhikr-name">سبحان الله</div>
+      <div class="dhikr-count" id="count0">0 / 33</div>
     </div>
 
-    <div class="buttons">
-
-      <button
-        class="tasbih-btn"
-        id="tasbihButton"
-        type="button">
-        تسبيح
-      </button>
-
-      <button
-        class="reset-btn"
-        id="resetButton"
-        type="button">
-        إعادة
-      </button>
-
+    <div class="dhikr-card" onclick="selectDhikr(1)">
+      <div class="dhikr-name">الحمد لله</div>
+      <div class="dhikr-count" id="count1">0 / 33</div>
     </div>
 
-    <div
-      class="status"
-      id="status"
-      aria-live="polite">
-      0 / 33
+    <div class="dhikr-card" onclick="selectDhikr(2)">
+      <div class="dhikr-name">الله أكبر</div>
+      <div class="dhikr-count" id="count2">0 / 34</div>
     </div>
 
-  </section>
+    <div class="dhikr-card" onclick="selectDhikr(3)">
+      <div class="dhikr-name">أستغفر الله</div>
+      <div class="dhikr-count" id="count3">0 / 33</div>
+    </div>
+
+    <div class="dhikr-card" onclick="selectDhikr(4)">
+      <div class="dhikr-name">لا إله إلا الله</div>
+      <div class="dhikr-count" id="count4">0 / 33</div>
+    </div>
+
+    <div class="dhikr-card" onclick="selectDhikr(5)">
+      <div class="dhikr-name">لا حول ولا قوة إلا بالله</div>
+      <div class="dhikr-count" id="count5">0 / 33</div>
+    </div>
+
+  </div>
+
+  <button class="reset" onclick="resetAll()">
+    ↻ إعادة العدادات
+  </button>
+
+</div>
 
 </main>
 
-<footer>
-  ذِكر — اذكر الله في كل وقت.
-</footer>
-
 <script>
 
-const tasbih = document.getElementById("tasbih");
-const button = document.getElementById("tasbihButton");
-const resetButton = document.getElementById("resetButton");
+/* الأذكار */
+const dhikr = [
+  {
+    name: "سبحان الله",
+    target: 33
+  },
+  {
+    name: "الحمد لله",
+    target: 33
+  },
+  {
+    name: "الله أكبر",
+    target: 34
+  },
+  {
+    name: "أستغفر الله",
+    target: 33
+  },
+  {
+    name: "لا إله إلا الله",
+    target: 33
+  },
+  {
+    name: "لا حول ولا قوة إلا بالله",
+    target: 33
+  }
+];
 
-const number = document.getElementById("number");
-const status = document.getElementById("status");
+/* العدادات */
+let counts = [0, 0, 0, 0, 0, 0];
 
-let count = 0;
-const total = 33;
+let current = 0;
 
-/* إنشاء الخرز */
+/* إنشاء 33 حبة */
+function createBeads() {
 
-const beadsCount = 24;
+  const container = document.getElementById("beads");
 
-for (let i = 0; i < beadsCount; i++) {
+  const oldBeads = container.querySelectorAll(".bead");
 
-  const bead = document.createElement("div");
+  oldBeads.forEach(bead => bead.remove());
 
-  bead.className = "bead";
+  const total = 33;
 
-  const angle =
-    (i / beadsCount) *
-    Math.PI *
-    2 -
-    Math.PI / 2;
+  const radius = 128;
 
-  const x =
-    50 +
-    42 *
-    Math.cos(angle);
+  for(let i = 0; i < total; i++) {
 
-  const y =
-    50 +
-    42 *
-    Math.sin(angle);
+    const bead = document.createElement("div");
 
-  bead.style.left = x + "%";
-  bead.style.top = y + "%";
+    bead.className = "bead";
 
-  tasbih.appendChild(bead);
+    const angle = (i / total) * Math.PI * 2 - Math.PI / 2;
+
+    const x =
+      150 +
+      Math.cos(angle) * radius -
+      17;
+
+    const y =
+      150 +
+      Math.sin(angle) * radius -
+      17;
+
+    bead.style.left = x + "px";
+    bead.style.top = y + "px";
+
+    container.appendChild(bead);
+  }
+
 }
 
-const beads =
-  document.querySelectorAll(".bead");
-
-
-/* صوت النقرة */
+/* صوت خفيف */
+let audioContext;
 
 function clickSound() {
 
   try {
 
-    const AudioContext =
-      window.AudioContext ||
-      window.webkitAudioContext;
-
-    const audio =
-      new AudioContext();
+    audioContext =
+      audioContext ||
+      new (window.AudioContext ||
+      window.webkitAudioContext)();
 
     const oscillator =
-      audio.createOscillator();
+      audioContext.createOscillator();
 
     const gain =
-      audio.createGain();
+      audioContext.createGain();
 
     oscillator.frequency.value = 520;
 
@@ -387,71 +421,44 @@ function clickSound() {
 
     oscillator.connect(gain);
 
-    gain.connect(audio.destination);
+    gain.connect(audioContext.destination);
 
     oscillator.start();
 
     oscillator.stop(
-      audio.currentTime + 0.045
+      audioContext.currentTime + 0.05
     );
 
-  } catch (error) {}
+  } catch(e) {}
 
 }
 
+/* اختيار ذكر */
+function selectDhikr(index) {
 
-/* تحديث الشكل */
+  current = index;
 
-function update() {
+  document.getElementById("title").textContent =
+    dhikr[index].name;
 
-  number.textContent = count;
+  document.getElementById("phrase").textContent =
+    dhikr[index].name;
 
-  status.textContent =
-    count + " / " + total;
+  document.getElementById("targetText").textContent =
+    "من " + dhikr[index].target;
 
-  beads.forEach((bead, index) => {
-
-    bead.classList.remove("active");
-
-    if (
-      count > 0 &&
-      index === ((count - 1) % beadsCount)
-    ) {
-
-      bead.classList.add("active");
-
-    }
-
-  });
-
-  if (count >= total) {
-
-    status.textContent = "تم التسبيح ✓";
-
-    status.classList.add("done");
-
-    button.textContent = "تم ✓";
-
-  } else {
-
-    status.classList.remove("done");
-
-    button.textContent = "تسبيح";
-
-  }
+  update();
 
 }
 
+/* العد */
+function countDhikr() {
 
-/* التسبيح */
-
-function doTasbih() {
-
-  if (count >= total) {
+  if(counts[current] >= dhikr[current].target) {
     return;
   }
 
-  count++;
+  counts[current]++;
 
   clickSound();
 
@@ -459,38 +466,95 @@ function doTasbih() {
 
 }
 
+/* تحديث الصفحة */
+function update() {
 
-/* الضغط على الزر */
+  const number =
+    document.getElementById("counter");
 
-button.addEventListener(
-  "click",
-  doTasbih
-);
+  number.textContent =
+    counts[current];
 
+  document.getElementById("targetText").textContent =
+    "من " + dhikr[current].target;
 
-/* الضغط على المسبحة نفسها */
+  const button =
+    document.getElementById("countButton");
 
-tasbih.addEventListener(
-  "click",
-  doTasbih
-);
+  if(
+    counts[current] >=
+    dhikr[current].target
+  ) {
 
+    button.textContent =
+      "✓ اكتمل";
 
-/* إعادة */
+    button.classList.add("done");
 
-resetButton.addEventListener(
-  "click",
-  function() {
+  } else {
 
-    count = 0;
+    button.textContent =
+      "اضغط للتسبيح";
 
-    update();
+    button.classList.remove("done");
 
   }
-);
 
+  /* تحديث الكروت */
+  for(let i = 0; i < dhikr.length; i++) {
 
-/* تشغيل أولي */
+    document.getElementById("count" + i).textContent =
+      counts[i] + " / " + dhikr[i].target;
+
+  }
+
+  /* تحديد الكارت الحالي */
+  const cards =
+    document.querySelectorAll(".dhikr-card");
+
+  cards.forEach((card, i) => {
+
+    card.classList.toggle(
+      "active",
+      i === current
+    );
+
+  });
+
+  /* تحديث الحبات */
+  const beads =
+    document.querySelectorAll(".bead");
+
+  beads.forEach((bead, i) => {
+
+    if(i < counts[current]) {
+
+      bead.style.background =
+        "#d7bd70";
+
+    } else {
+
+      bead.style.background =
+        "#176043";
+
+    }
+
+  });
+
+}
+
+/* إعادة */
+function resetAll() {
+
+  counts =
+    [0, 0, 0, 0, 0, 0];
+
+  update();
+
+}
+
+/* تشغيل */
+createBeads();
 
 update();
 
